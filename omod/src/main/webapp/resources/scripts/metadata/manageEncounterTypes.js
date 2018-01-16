@@ -100,13 +100,22 @@ angular.module("manageEncounterTypes", [ "encounterTypeService", "ngDialog", "ui
     .controller("EditEncounterTypeController", [ "$scope", "$state", "EncounterType", "encounterType",
         function($scope, $state, EncounterType, encounterType) {
             $scope.encounterType = encounterType;
-
+ $scope.data = {
+    model: null,
+    availableOptions: [
+      {id: '1', name: 'Option A'},
+      {id: '2', name: 'Option B'},
+      {id: '3', name: 'Option C'}
+    ]
+   };
             $scope.save = function() {
                 // TODO: utility function for doing this, until RESTWS-460 is fixed
                 var toSave = {
                     uuid: $scope.encounterType.uuid,
                     name: $scope.encounterType.name,
-                    description: $scope.encounterType.description
+                    description: $scope.encounterType.description,
+                    editPrivilege: $scope.encounterType.editPrivilege,
+                    viewPrivilege: $scope.encounterType.viewPrivilege
                 }
 
                 var successMessageCode = ($scope.encounterType.uuid) ? "adminui.savedChanges" : "adminui.saved";

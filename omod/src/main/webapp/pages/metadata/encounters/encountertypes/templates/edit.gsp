@@ -30,17 +30,18 @@
         <label>${ui.message('general.description')}</label>
         <textarea ng-model="encounterType.description" cols="54" required></textarea>
     </p>
-    
-     <p>
-        <label>${ui.message('edit.privilege')}</label>
-        <select id="" name="" from="${['', '']}" value=""  multiple="true"/>
-    </p>
-    
-    <p>
-        <label>${ui.message('view.privilege')}</label>
-        <select id="" name="" from="${['', '']}" value=""  multiple="true"/>
-    </p>
 
+<p> <label>${ui.message('adminui.editPrivilege.label')}</label>
+ <select name="singleSelect" id="singleSelect" ng-model="encounterType.editPrivilege">
+      <option value="">---Please select---</option>
+      <option value="{{data.model}}">Option 1</option>
+    </select>The privilege needed by a user to edit encounters of this type
+    </p>
+ <label>${ui.message('adminui.privilege.view')}</label>
+     <select name="singleSelect" id="singleSelect" ng-model="encounterType.viewPrivilege">
+          <option value="">---Please select---</option>
+          <option value="{{privileges}}">Option 1</option>
+        </select><p>The privilege needed by a user to view encounters of this type</p>
     <p>
         <button ng-disabled="encounterTypeForm.\$invalid" type="submit" class="confirm right">${ui.message('general.save')}</button>
         <button type="button" class="cancel" ui-sref="list">${ui.message('general.cancel')}</button>
